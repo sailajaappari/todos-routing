@@ -1,0 +1,4 @@
+<form (ngSubmit)="submit(f)" #f="ngForm">
+  <input name="title" [ngModel]="todo.title">
+  <button type="submit">Edit todo</button>
+</form>

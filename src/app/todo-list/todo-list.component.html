@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let todo of todos">
+    <app-todo [item]="todo" (onChange)="onComplete.emit($event)" (onRemove)="onDelete.emit($event)">
+    </app-todo>
+  </li>
+</ul>

@@ -1,0 +1,6 @@
+<div>
+  <span [ngClass]="{ complete: item.complete }">{{ item.title }}</span>
+  <button type="button" (click)="onChange.emit({ todo: item });">Done</button>
+  <button type="button" (click)="onRemove.emit({ todo: item });">Delete</button>
+  <a [routerLink]="['/todos', item.id, 'edit' ]" routerLinkActive="active">Edit</a>
+</div>
