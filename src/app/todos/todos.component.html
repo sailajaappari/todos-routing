@@ -1,4 +1,11 @@
 <div>
-  <app-todo-list [todos]="todos" (onComplete)="completeTodo($event)" (onDelete)="removeTodo($event)">
-  </app-todo-list>
+  <app-todo-search (onSearch)="searchTodo($event)"></app-todo-search>
+  <ul>
+    <li *ngFor="let todo of todos">
+      <app-todo [item]="todo" (onChange)="completeTodo($event)" (onRemove)="removeTodo($event)">
+      </app-todo>
+    </li>
+  </ul>
+  <app-todo-page (first)="firstPage()" (previous)="previousPage()" (next)="nextPage()" (last)="lastPage()">
+  </app-todo-page>
 </div>

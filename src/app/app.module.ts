@@ -5,13 +5,14 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TodosComponent } from './todos/todos.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoComponent } from './todo/todo.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodosFormComponent } from './todos-form/todos-form.component';
 import { TodoService } from './app.service';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { TodosEditComponent } from './todos-edit/todos-edit.component';
+import { TodoPageComponent } from './todo-page/todo-page.component';
+import { TodoSearchComponent } from './todo-search/todo-search.component';
 
 export const todoRoutes: Routes = [
   { path: 'list', component: TodosComponent },
@@ -23,12 +24,13 @@ export const todoRoutes: Routes = [
   declarations: [
     AppComponent,
     TodosComponent,
-    TodoListComponent,
     TodoComponent,
     TodoFormComponent,
     TodosFormComponent,
     TodoEditComponent,
-    TodosEditComponent
+    TodosEditComponent,
+    TodoPageComponent,
+    TodoSearchComponent
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(todoRoutes)],
   providers: [TodoService],

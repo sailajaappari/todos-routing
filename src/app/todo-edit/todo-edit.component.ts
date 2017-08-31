@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { TodoItem } from '../todo';
 
 @Component({
   selector: 'app-todo-edit',
@@ -6,7 +7,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 })
 export class TodoEditComponent {
   title: string;
-  @Input() todo;
+  @Input() todo: TodoItem;
 
   @Output() onEdit = new EventEmitter();
 

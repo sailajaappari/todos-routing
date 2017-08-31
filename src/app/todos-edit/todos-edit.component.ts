@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TodoService } from '../app.service';
+import { TodoItem } from '../todo';
 
 @Component({
   selector: 'app-todos-edit',
@@ -8,7 +9,7 @@ import { TodoService } from '../app.service';
 })
 export class TodosEditComponent implements OnInit {
   todoId: number;
-  todo: { id: number; title: string; complete: boolean };
+  todo: TodoItem;
   constructor(
     private route: ActivatedRoute,
     private todoService: TodoService
