@@ -19,5 +19,6 @@ export class TodoSearchComponent {
       return;
     }
     this.onSearch.emit({ searchString: value.searchString });
+    // this.searchString = '';
   }
 }

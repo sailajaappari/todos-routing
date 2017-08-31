@@ -36,7 +36,7 @@ export class TodoService {
   });
 
   pagination(pageNumber: number) {
-    return this.todos
+    return this.defaultTodos
       .skip(this.viewTodos.get('todosPerPage') * pageNumber)
       .take(this.viewTodos.get('todosPerPage'))
       .toList();
@@ -64,7 +64,7 @@ export class TodoService {
       'totalPages',
       Math.ceil(this.todos.count() / this.viewTodos.get('todosPerPage'))
     );
-    // return this.todos;
+    this.defaultTodos = this.todos;
   }
 
   editTodo(title: string, id: number) {
@@ -73,12 +73,28 @@ export class TodoService {
       title: title,
       complete: false
     });
+    this.defaultTodos = this.defaultTodos.setIn(
+      [this.defaultTodos.findIndex(it => it.id === id)],
+      {
+        id: id,
+        title: title,
+        complete: false
+      }
+    );
     return this.getTodosWithPage(this.viewTodos.get('pageNumber'));
   }
 
   completeTodo({ todo }) {
     this.todos = this.todos.setIn(
       [this.todos.findIndex(it => it.id === todo.id)],
+      {
+        id: todo.id,
+        title: todo.title,
+        complete: true
+      }
+    );
+    this.defaultTodos = this.defaultTodos.setIn(
+      [this.defaultTodos.findIndex(it => it.id === todo.id)],
       {
         id: todo.id,
         title: todo.title,
@@ -92,9 +108,12 @@ export class TodoService {
     this.todos = this.todos.delete(
       this.todos.findIndex(it => it.id === todo.id)
     );
+    this.defaultTodos = this.defaultTodos.delete(
+      this.defaultTodos.findIndex(it => it.id === todo.id)
+    );
     this.viewTodos = this.viewTodos.set(
       'totalPages',
-      Math.ceil(this.todos.count() / this.viewTodos.get('todosPerPage'))
+      Math.ceil(this.defaultTodos.count() / this.viewTodos.get('todosPerPage'))
     );
     return this.getTodosWithPage(this.viewTodos.get('pageNumber'));
   }
@@ -109,6 +128,14 @@ export class TodoService {
         (todo: TodoItem): boolean => todo.title.indexOf(searchString) !== -1
       )
       .toList();
+    this.viewTodos = this.viewTodos.set(
+      'totalPages',
+      Math.ceil(this.defaultTodos.count() / this.viewTodos.get('todosPerPage'))
+    );
+    this.viewTodos = this.viewTodos.set('pageNumber', 0);
+    console.log(this.defaultTodos);
+    console.log(this.viewTodos);
+    return this.getTodosWithPage(this.viewTodos.get('pageNumber'));
   }
 
   firstPage() {

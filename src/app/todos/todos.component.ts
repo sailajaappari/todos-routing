@@ -8,12 +8,11 @@ import { List } from 'immutable';
   templateUrl: './todos.component.html'
 })
 export class TodosComponent {
-  todos: List<TodoItem> = this.todosService.getTodos();
+  todos: List<TodoItem> = this.todosService.getDefaultTodos();
   constructor(private todosService: TodoService) {}
 
   searchTodo({ searchString }) {
-    this.todosService.searchTodos(searchString);
-    this.todos = this.todosService.getDefaultTodos();
+    this.todos = this.todosService.searchTodos(searchString);
   }
 
   completeTodo({ todo }) {

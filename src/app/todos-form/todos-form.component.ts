@@ -10,7 +10,9 @@ import { List } from 'immutable';
 export class TodosFormComponent {
   todos: List<TodoItem>;
 
-  constructor(private todosService: TodoService) {}
+  constructor(private todosService: TodoService) {
+    this.todosService.defaultTodos = this.todosService.todos;
+  }
 
   addTodo({ title }) {
     this.todosService.addTodo({ title });
