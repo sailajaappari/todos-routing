@@ -19,6 +19,18 @@ export class TodosComponent {
     this.todos = this.todosService.completeTodo({ todo });
   }
 
+  allTodos() {
+    this.todos = this.todosService.allTodos();
+  }
+
+  completedTodos() {
+    this.todos = this.todosService.completedTodos();
+  }
+
+  notCompletedTodos() {
+    this.todos = this.todosService.notCompletedTodos();
+  }
+
   removeTodo({ todo }) {
     this.todos = this.todosService.removeTodo({ todo });
   }

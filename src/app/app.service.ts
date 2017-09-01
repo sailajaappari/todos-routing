@@ -133,8 +133,36 @@ export class TodoService {
       Math.ceil(this.defaultTodos.count() / this.viewTodos.get('todosPerPage'))
     );
     this.viewTodos = this.viewTodos.set('pageNumber', 0);
-    console.log(this.defaultTodos);
-    console.log(this.viewTodos);
+    return this.getTodosWithPage(this.viewTodos.get('pageNumber'));
+  }
+
+  allTodos() {
+    this.defaultTodos = this.todos;
+    this.viewTodos = this.viewTodos.set('pageNumber', 0);
+    return this.getTodosWithPage(this.viewTodos.get('pageNumber'));
+  }
+
+  completedTodos() {
+    this.defaultTodos = this.todos
+      .filter((todo: TodoItem): boolean => todo.complete)
+      .toList();
+    this.viewTodos = this.viewTodos.set(
+      'totalPages',
+      Math.ceil(this.defaultTodos.count() / this.viewTodos.get('todosPerPage'))
+    );
+    this.viewTodos = this.viewTodos.set('pageNumber', 0);
+    return this.getTodosWithPage(this.viewTodos.get('pageNumber'));
+  }
+
+  notCompletedTodos() {
+    this.defaultTodos = this.todos
+      .filter((todo: TodoItem): boolean => !todo.complete)
+      .toList();
+    this.viewTodos = this.viewTodos.set(
+      'totalPages',
+      Math.ceil(this.defaultTodos.count() / this.viewTodos.get('todosPerPage'))
+    );
+    this.viewTodos = this.viewTodos.set('pageNumber', 0);
     return this.getTodosWithPage(this.viewTodos.get('pageNumber'));
   }
 

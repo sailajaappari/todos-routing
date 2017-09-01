@@ -13,6 +13,7 @@ import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { TodosEditComponent } from './todos-edit/todos-edit.component';
 import { TodoPageComponent } from './todo-page/todo-page.component';
 import { TodoSearchComponent } from './todo-search/todo-search.component';
+import { TodoFilterComponent } from './todo-filter/todo-filter.component';
 
 export const todoRoutes: Routes = [
   { path: 'list', component: TodosComponent },
@@ -30,7 +31,8 @@ export const todoRoutes: Routes = [
     TodoEditComponent,
     TodosEditComponent,
     TodoPageComponent,
-    TodoSearchComponent
+    TodoSearchComponent,
+    TodoFilterComponent
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(todoRoutes)],
   providers: [TodoService],
