@@ -5,7 +5,8 @@ import { List } from 'immutable';
 
 @Component({
   selector: 'app-todos',
-  templateUrl: './todos.component.html'
+  templateUrl: './todos.component.html',
+  styleUrls: ['./todos.component.css']
 })
 export class TodosComponent {
   todos: List<TodoItem> = this.todosService.getDefaultTodos();

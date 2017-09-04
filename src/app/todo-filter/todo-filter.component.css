@@ -1,12 +1,8 @@
-.complete {
-  text-decoration: line-through;
-}
-
-.todo-list {
+.todos-filter {
   padding: 8px;
 }
-.todo-list button {
-  padding: 5px;
+.todos-filter button {
+  padding: 8px;
   background: gray;
   color: #fff;
   border: transparent;

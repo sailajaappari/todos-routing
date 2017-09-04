@@ -3,7 +3,8 @@ import { TodoItem } from '../todo';
 
 @Component({
   selector: 'app-todo-edit',
-  templateUrl: './todo-edit.component.html'
+  templateUrl: './todo-edit.component.html',
+  styleUrls: ['./todo-edit.component.css']
 })
 export class TodoEditComponent {
   title: string;

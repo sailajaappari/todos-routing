@@ -1,4 +1,4 @@
-.search-button {
+.edit-button {
   padding: 8px;
   background: gray;
   color: #fff;
@@ -6,7 +6,7 @@
   border-radius: 5px;
 }
 
-.search-textbox {
+.edit-textbox {
   padding: 5px 5px 5px 10px;
   margin: 10px 10px 10px 15px;
   border-radius: 5px;

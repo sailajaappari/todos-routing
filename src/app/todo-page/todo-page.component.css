@@ -1,11 +1,7 @@
-.complete {
-  text-decoration: line-through;
-}
-
-.todo-list {
+.todo-page {
   padding: 8px;
 }
-.todo-list button {
+.todo-page button {
   padding: 5px;
   background: gray;
   color: #fff;
